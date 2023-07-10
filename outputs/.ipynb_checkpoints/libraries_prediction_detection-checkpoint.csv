@@ -1,0 +1,5 @@
+Library,Package,Srcs,Sinks
+Wearable,com.google.android.gms.wearable,0.95,0.96
+TV,com.google.android.gms.cast.tv,0.92,1.00
+Analytics,com.google.android.gms.analytics,1.00,0.93
+Ads,com.google.android.gms.ads,0.92,0.85

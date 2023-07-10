@@ -1,0 +1,1 @@
+docker run -p 8888:8888 --name notebook -v /put_here_your_local_path/docflow/:/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes --env-file .env -it {your_image_id}
