@@ -13,7 +13,7 @@ train_dataloader = DataLoader(train_examples, shuffle=True, batch_size=16)
 train_loss = losses.CosineSimilarityLoss(model)
 
 
-# This list can be customised and extended 
+# This list is just an example. It can be customised and extended 
 sentences1 = ['random access file read line reads the next line of text from this file',
 'session get peer host returns the host name of the peer in this session',
 'cast session sends a message to the currently connected application',

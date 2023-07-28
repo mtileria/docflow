@@ -120,12 +120,12 @@ def get_nested_classes(soup, url):
     return nested_data
 
 
-if __name__ == '__main__':
+def star_crawling(input,output):
     start = time.time()
-    base_path = '~/input/'
     base_url = 'https://developers.google.com'
-    with open (base_path + 'gps-libraries.txt', 'r') as file_in:
+    with open (input, 'r') as file_in:
         urls = file_in.read().splitlines()
+
     libraries_list = []
     for url in urls:
         lib_name = url.split('/')[-2]
@@ -158,18 +158,16 @@ if __name__ == '__main__':
     
         # serialize library data
         lib_dict = library.convert_json()
-        print(library.name)
         libraries_list.append(lib_dict)
     
     # Finally write libraries to json
     json_string = json.dumps(libraries_list)
-    with open(base_path + 'json_data2.json', 'w') as outfile:
+    with open(output, 'w') as outfile:
         outfile.write(json_string)
     # write errors
     if len(errors) > 0:
-        with open('errors.txt','w') as f:
-            for item in errors:
-                f.write("%s\n" % item)
+        for item in errors:
+            print(item)
 
     end = time.time()
     sec = end - start

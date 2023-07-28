@@ -91,11 +91,11 @@ def parse_class_description(url):
     return {'success':tmp} #collect_results()
 
 
-if __name__ == '__main__':
+def star_crawling(input,output):
     start = time.time()
     print('start script')
 
-    with open('~/aosp_classes.txt') as f:
+    with open(input) as f:
         urls = f.read().splitlines()
         urls = [x for x in urls if x.split('/')[-1][0].isupper()]
 
@@ -112,19 +112,17 @@ if __name__ == '__main__':
     pool.join()
 
     if len(output) > 0:
-        print('write output')
         json_string = json.dumps(output, indent=4)
-        with open('/home/marcos/git/nlp-documentation/aosp/full_info.json', 'w') as outfile:
+        with open(output, 'w') as outfile:
             outfile.write(json_string)
     else:
         print('Nothing to write')
 
     if len(errors) > 0:
-        with open('~/outputs/errors_full.txt','w') as f:
-            for item in errors:
-                f.write("%s\n" % item)
+        print('Logging errors')
+        for item in errors:
+            print(item)
 
     end = time.time()
     sec = end - start
-    print('script finished')
-    print(f'Processing took {sec} seconds')
+    print(f'script finished. Processing took {sec} seconds')
